@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Login to GitHub Container Registry
+        run: docker login -u johnnyms -p MatrixSoftware
+      -
+        name: Pull image to use as a cache
+        run: docker pull johnnyms/testing:latest || exit 0
+      -
+        name: Build Docker image
+        run: docker build . --cache-from johnnyms/testing:latest --tag johnnyms/testing:latest
+      -
+        name: Push the image to GitHub Container Registry
+        run: docker push johnnyms/testing:latest
