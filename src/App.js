@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn Deployment Nab
+          Learn Deployment You Mazafacka Nab Cunt Useless Piece O'Shit
         </a>
       </header>
     </div>
